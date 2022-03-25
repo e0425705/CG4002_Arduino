@@ -17,14 +17,18 @@ void setup()
 {  
   // Initialize serial connection to print on the Serial Monitor of the Arduino IDE
   Serial.begin(9600);
-  // Initializes IR Transmitter
+  // Initializes IR Transmitter.yr
   IrSender.begin(PIN_SEND);
+  //digitalWrite(PIN_BUTTON, 0);
 }  
                                
 void loop()  
 {  
   int buttonState = digitalRead(PIN_BUTTON);
 
+
+  //digitalWrite(PIN_BUTTON, 0);
+  
   if (buttonState == HIGH) {
     Serial.println("Button pressed, sending signal...");
 
@@ -32,11 +36,17 @@ void loop()
     // if receives a signal from D5, then send the following to D3
     //IrSender.sendNEC(0x1111, 0x34, true, 0);
 
+    //IrSender.begin(PIN_SEND);
+
+    digitalWrite(PIN_BUTTON, 0);
+
      /* Player 2 */
     // if receives a signal from D5, then send the following to D3
-    IrSender.sendNEC(0x1010, 0x34, true, 0);
+    //IrSender.sendNEC(0x1010, 0x34, true, 0);
   }
 
+  //IrSender.sendNEC(0x1010, 0x34, true, 0);
+
   // Wait for 20ms
-  delay(20); 
+  delay(100); 
 }  
